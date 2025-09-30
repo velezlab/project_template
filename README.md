@@ -24,6 +24,7 @@ Your preregistration links here
 - for folder and file names: 
 	+ don't use white space in either folder or filenames, use an underscore "_" instead
 	+ use lower case only
+    + in cases where files should be read sequentially - such as steps in an analysis pipeline with dependencies between them, or multiple submissions of a paper - start each filename with a number so that they're read out in the intended order. See "Repository structure," below for specific guidelines for different types of files. 
 - always use relative paths in your code
 	+ for example, to save a figure from an R script inside the `code` folder, the path should be "../../figures/figure_name.pdf"
 - keep your folder structure organized
@@ -53,36 +54,35 @@ Your preregistration links here
 ```
 
 ### code 
+Put all your code here. There are subfolders for experiment code, preprocessing code, and analysis code.
 
-Put all your code here. There are subfolders for experiment code, preprocessing code, and analysis code. If nedeed, use additional subfolders for scripts based on the programming language (e.g., R, python, JS, etc.). 
-
-#### experiments 
-
-The experiments folder is for the online (or in lab) experiments. Each experiment should be in its own subfolder. When you run another experiment, make sure to create a new folder (so that we always know what an experiment looked like when it was run). In readme file for the experiments folder, provide a brief summary of each experiment. Also note down any additional information that may not be saved within each experiment (e.g. how much the payment was for MTurk participants).
+* **experiments**: The experiments folder is for the online (or in lab) experiments. Each experiment should be in its own subfolder. When you run another experiment, make sure to create a new folder (so that we always know what an experiment looked like when it was run). In readme file for the experiments folder, provide a brief summary of each experiment. Also note down any additional information that may not be saved within each experiment (e.g. how much the payment was for MTurk participants).
+* **preprocessing**: The preprocessing folder is for converting raw data to "clean" data that is ready to share. Use these scripts to make changes like removing identifying information from data or wrangling data into a well-organized csv file.
+* * **analysis**: All your analyses on cleaned data live here!
+  * For multi-experiment projects with multiple analysis files per experiment, consider splitting this subfolder by experiment (e.g., `exp1/` `exp2/` `exp3/`).
+  * For projects with complex data processing pipelines, consider splitting this folder into numbered subfolders based on steps in the processing pipeline (e.g., `01_demographics/` `02_maplog`/ etc.) and numbering scripts inside each subfolder in the order that they should be executed. This naming convention allows other researchers—including you, in the distant future—to reproduce your analyses by running the analysis scripts in the correct order. You can find an example of this folder organization at work [here](https://github.com/nataliavelez/OHOL_Tech).
 
 ### data 
 
-Put your raw and processed data files here. Any data wrangling to the raw files should happen in your code scripts.
+* **raw**: Store raw data here. **NEVER alter raw data data.** Any changes that you make to the data should be saved in the "processed" folder, or done online in your analysis scripts.
+* **processed**: Store data here after preprocessing. In the README for processed data, add a codebook summarizing the structure of the data (e.g., which column correspond to which measure). You can find an example codebook [here]().
 
-Add subfolders for each experiment, containing raw data in table format.
-
-In readme file for the processed data, provide a brief summary of the structure of the data (e.g., which column corresponds to what measure).
+For multi-experiment experiment projects, add subfolders within the "raw" and "processed" folders corresponding to different experiments. For experiments with complex data analysis pipelines and lots of intermediate outputs, you may want to add subfolders within the "processed" folder corresponding 
 
 ### figures 
-
-Save all your figures here. You may want to include additional subfolder here such as `plots/`, `diagrams/` etc. 
+Save all your figures and display elements here. You may want to include additional subfolder here such as `plots/`, `diagrams/`, `tables/` etc. 
 
 ### materials
-
 Put experiment stimuli and other materials here that are relevant for your project.
 
 ### presentation
-
-Put your project presentation here (e.g. your keynote, powerpoint, google slides, or pdf file).
+Put your project presentation here (e.g. your keynote, powerpoint, google slides, or pdf file). You may want to include an additional subfolder called `assets/` for any display elements used in the presentation, such as cute videos, illustrations, etc.
 
 ### writeup 
+Put all your writing here. This folder structure is likely to expand for more complex projects. For example, you could add a subfolders like folders `journal/01_cognition/sub01/`, `conference/2025-01_cogsci/resubmission/` etc. Best practices: 
 
-Put all your writing here. This folder structure is likely to expand for more complex projects. For example, you could add a subfolders like folders `journal/cognition/submission/`, `proceedings/cogsci/resubmission/` etc. 
+* Number each written work chronologically; in the examples above, the folders are numbered with the order in which the author submitted to journals (`01_cognition`) or with the deadline for conference proceedings (`2025-01_cogsci`). Whatever you choose, make sure it's consistent within a folder!
+* Create separate subfolders for each submission to the same journal, e.g., `initial_submission`, `rev1`, `rev2`. Do _not_ alter files within a submission after they've been sent out.
 
 ## CRediT author statement 
 
